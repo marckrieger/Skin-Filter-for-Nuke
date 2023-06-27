@@ -3,10 +3,9 @@ version 14.0 v3
 Gizmo {
 inputs 2
 addUserKnob {20 User}
-addUserKnob {41 high_frequency_blur l "high frequency blur" T Blur14.size}
+addUserKnob {41 high_frequency_blur l "high frequency blur" t "sometimes it helps to blur more in one axis" T Blur14.size}
 addUserKnob {41 blur_threshold l "blur threshold" T Blur13.size}
-addUserKnob {7 unify_tone l "unify tone"}
-unify_tone 1
+addUserKnob {7 unify_tone l "unify tone" t "for uses other than skin retouch, for example smoothing surfaces"}
 addUserKnob {26 ""}
 addUserKnob {41 mix T Merge2.mix}
 addUserKnob {26 ""}
@@ -35,33 +34,33 @@ name Dot2
 xpos 518
 ypos 238
 }
-set N9d0e1c00 [stack 0]
+set N1c3f4c00 [stack 0]
 Dot {
 name Dot24
 xpos 356
 ypos 238
 }
-set N9d0e0800 [stack 0]
+set N1c3f5800 [stack 0]
 Dot {
 name Dot29
 xpos 194
 ypos 238
 }
 Blur {
-size 6
+size 1.5
 name Blur13
 xpos 160
 ypos 298
 }
-set N98479800 [stack 0]
+set N2ac32c00 [stack 0]
 Blur {
-size {15 5}
+size {10 10}
 name Blur14
 xpos 160
 ypos 377
 }
-push $N98479800
-push $N9d0e0800
+push $N2ac32c00
+push $N1c3f5800
 Merge2 {
 inputs 2
 operation from
@@ -77,14 +76,14 @@ xpos 322
 ypos 383
 }
 ColorCorrect {
-saturation {{"1+\[lindex \[split \[full_name \[topnode]] \".\"] 0].unify_tone*(2/3)"}}
+saturation {{"1+\[lindex \[split \[full_name \[topnode]] \".\"] 0].unify_tone*(1/3)"}}
 contrast {{"1-\[lindex \[split \[full_name \[topnode]] \".\"] 0].unify_tone/2"}}
 gain {{"1+\[lindex \[split \[full_name \[topnode]] \".\"] 0].unify_tone/2"}}
 name ColorCorrect1
 xpos 322
 ypos 453
 }
-push $N9d0e1c00
+push $N1c3f4c00
 Merge2 {
 inputs 2+1
 operation copy
